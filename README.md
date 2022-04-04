@@ -14,6 +14,10 @@ In the project directory.
 ### To start the application in development mode.
 ### `yarn start`
 
+### to view endpoint documentation
+when the app is running.
+enter `http://localhost:1337/api/v1/documentation` in your browser to view the documentation.
+
 ## PROJECT FILES AND DIRECTORY
 ```bash
 ├── bin
