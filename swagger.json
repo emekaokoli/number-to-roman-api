@@ -1,0 +1,94 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Number to roman number API",
+    "description": "number to roman API",
+    "contact": {
+      "name": "Emeka Okoli",
+      "email": "emekaokoli00@gmail.com",
+      "url": "https://github.com/emekaokoli"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:1337",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Number to roman number",
+      "description": "API that converts 1 - 100 integers to their equivalent roman number"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "securityDefinitions": {},
+  "paths": {
+    "/getromans": {
+      "post": {
+        "summary": "posts a number to get the roman equivalent",
+        "tags": ["Romans"],
+        "description": "posts a number to get a new roman number",
+        "parameters": [
+          {
+            "name": "posts a number to get the roman equivalent",
+            "in": "body",
+            "description": "posts a number to get the roman equivalent",
+            "schema": {
+              "$ref": "#/definitions/Romans"
+            }
+          }
+        ],
+        "consumes": ["application/x-www-form-urlencoded"],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "post dispatched successfully",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "400": {
+            "description": "Validation error, provided data in incorrect format",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "404": {
+            "description": "The resource you were trying to reach is not found",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "Romans": {
+      "required": ["number"],
+      "properties": {
+        "number": {
+          "type": "string",
+          "uniqueItems": false,
+          "minimum": 1,
+          "maximum": 100
+        }
+      }
+    },
+    "Error": {
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
